@@ -1,9 +1,19 @@
-var str = "hello how are you doing for the day";
-  
-           var search_position = str.search("doing");
-           var txt = str.replace("how are" , "how are you")
-           var x = 70;
-           var y = 90;
-           document.getElementById("searchresult").innerHTML = search_position;
-           document.getElementById("replaceresult").innerHTML = txt;
-           document.getElementById("stringresult").innerHTML = String(x) , String(y); 
+var myform = document.getElementById("myform");
+var myinput = document.getElementById("myinput");
+var myitem = document.getElementById("myitems");
+
+myform.addEventListener("submit" , function(event){
+    event.preventDefault()
+    createItem(myinput.value)
+})
+
+function createItem(inputItems){
+    var items = `<li>${inputItems} <button onclick="deleteElement(this)">Delete</button> </li>`;
+    myitem.insertAdjacentHTML("beforeend", items)
+    myinput.value = "";
+    myinput.focus();
+    
+}
+function deleteElement(ElementtoDelete) {
+ ElementtoDelete.parentElement.remove();
+}
